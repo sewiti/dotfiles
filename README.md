@@ -1,9 +1,8 @@
 # ZSH config
 
-## Arch packages
+## Archlinux dependencies
 
-    sudo pacman -S zsh zsh-autosuggestions zsh-completions zsh-syntax-highlighting zsh-theme-powerlevel10k
-    yay -S autojump
+    sudo pacman -S micro zsh zsh-autosuggestions zsh-completions zsh-syntax-highlighting zsh-theme-powerlevel10k && yay -S autojump lf gitflow-avh gitflow-zshcompletion-avh
 
 ## Changing Shell
 
