@@ -6,16 +6,13 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 
+# Load profile
+[ -f "$HOME/.profile" ] && source "$HOME/.profile"
+
+
 # Enable colors
 autoload -U colors && colors
 PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
-
-
-# Env variables
-export EDITOR="/usr/bin/micro"
-export ANDROID_HOME="$HOME/Android/Sdk"
-export GOPATH="$HOME/go"
-export GOBIN="$HOME/go/bin"
 
 
 # History in cache directory:
@@ -47,51 +44,51 @@ alias bc="BC_ENV_ARGS=<(echo 'scale=3') \bc -q"
 
 alias free='free -m'
 alias more='less'
-alias pac='sudo pacman'
 
 alias yt-pl='youtube-dl -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]" -o "%(playlist_index)s. %(title)s.%(ext)s"'
-alias yt-pl-a='youtube-dl -f "bestaudio[ext=m4a]" -o "%(playlist_index)s. %(title)s.%(ext)s"'
-alias yt-a='youtube-dl -f "bestaudio[ext=m4a]" --add-metadata -o "%(title)s.%(ext)s"'
+alias yt-pl-a='youtube-dl -f "bestaudio[ext=m4a]" --add-metadata -o "%(playlist_index)s. %(title)s.%(ext)s"'
 alias yt-v='youtube-dl -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]" -o "%(title)s.%(ext)s"'
-
-alias hotspot-wifi='hotspot wlp3s0'
-alias hotspot-ethernet='hotspot enp2s0'
+alias yt-a='youtube-dl -f "bestaudio[ext=m4a]" --add-metadata -o "%(title)s.%(ext)s"'
 
 alias teamviewerfix='sudo teamviewer --daemon start'
 
 
 # Functions
 lfcd () {
-	type lf>/dev/null || { type lf; exit 1; }
-
-	tmp="$(mktemp)"
-	lf -last-dir-path="$tmp" "$@"
-	if [ -f "$tmp" ]; then
-		dir="$(cat "$tmp")"
-		rm -f "$tmp"
-		[ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
+	if type lf>/dev/null; then
+		tmp="$(mktemp)"
+		lf -last-dir-path="$tmp" "$@"
+		if [ -f "$tmp" ]; then
+			dir="$(cat "$tmp")"
+			rm -f "$tmp"
+			[ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
+		fi
+	else
+		type lf
 	fi
 }
 
 ex ()
 {
-	[ -f "$1" ] || { echo "'$1' is not a valid file"; exit 1; }
-
-	case "$1" in
-		*.tar.bz2)   tar xjf "$1"   ;;
-		*.tar.gz)    tar xzf "$1"   ;;
-		*.tar.xz)    tar xJf "$1"   ;;
-		*.bz2)       bunzip2 "$1"   ;;
-		*.rar)       unrar x "$1"   ;;
-		*.gz)        gunzip "$1"    ;;
-		*.tar)       tar xf "$1"    ;;
-		*.tbz2)      tar xjf "$1"   ;;
-		*.tgz)       tar xzf "$1"   ;;
-		*.zip)       unzip "$1"     ;;
-		*.Z)         uncompress "$1";;
-		*.7z)        7z x "$1"      ;;
-		*)           echo "'$1' cannot be extracted via ex()" ;;
-	esac
+	if [ -f "$1" ]; then
+		case "$1" in
+			*.tar.bz2)   tar xjf "$1"   ;;
+			*.tar.gz)    tar xzf "$1"   ;;
+			*.tar.xz)    tar xJf "$1"   ;;
+			*.bz2)       bunzip2 "$1"   ;;
+			*.rar)       unrar x "$1"   ;;
+			*.gz)        gunzip "$1"    ;;
+			*.tar)       tar xf "$1"    ;;
+			*.tbz2)      tar xjf "$1"   ;;
+			*.tgz)       tar xzf "$1"   ;;
+			*.zip)       unzip "$1"     ;;
+			*.Z)         uncompress "$1";;
+			*.7z)        7z x "$1"      ;;
+			*)           echo "'$1' cannot be extracted via ex()" ;;
+		esac
+	else
+		echo "'$1' is not a valid file"
+	fi
 }
 
 git-zip ()
@@ -100,25 +97,6 @@ git-zip ()
 	
 	stash=${git stash create}
 	git archive -9 -o "$1" ${stash:-HEAD}
-}
-
-hotspot ()
-{
-	[ "$#" -ne 1 ] && { echo "Usage: $0 <interface>"; exit 1; }
-
-	echo "Running hotspot from $1"
-	echo "SSID: minde-laptop"
-	echo "Pass: mindaugelis"
-	sudo create_ap wlp3s0 "$1" minde-laptop mindaugelis
-}
-
-instagram-dl ()
-{
-	[ "$#" -ne 2 ] && { echo "Usage: $0 <url> <output>"; exit 1; }
-
-	url="$1media?size=l"
-	echo Downloading "$url"
-	wget -q -O "$2" "$url" && echo Saved $(pwd)/"$2" || echo "Unable to download."
 }
 
 corona ()
