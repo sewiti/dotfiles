@@ -20,6 +20,15 @@ sudo apt install -y zsh zsh-autosuggestions zsh-syntax-highlighting git
 sudo git clone --depth=1 https://github.com/romkatv/powerlevel10k.git /usr/share/zsh-theme-powerlevel10k
 ```
 
+## Fedora
+
+[zsh-completions](https://software.opensuse.org/download.html?project=shells%3Azsh-users%3Azsh-completions&package=zsh-completions)
+
+```sh
+sudo dnf install -y zsh zsh-autosuggestions zsh-syntax-highlighting git
+sudo git clone --depth=1 https://github.com/romkatv/powerlevel10k.git /usr/share/zsh-theme-powerlevel10k
+```
+
 ## OpenSUSE
 
 [zsh-autosuggestions](https://software.opensuse.org/download.html?project=shells:zsh-users:zsh-autosuggestions&package=zsh-autosuggestions)
