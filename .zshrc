@@ -35,6 +35,7 @@ alias more='less'
 alias cd..='cd ..'
 alias ls='ls --color=auto'
 alias ll='ls -AFlh'
+alias la='ls -AF'
 
 alias bc="BC_ENV_ARGS=<(echo 'scale=6') \bc -q"
 
