@@ -47,33 +47,53 @@ alias yt-dl-pl-a='youtube-dl -f "bestaudio[ext=m4a]" --add-metadata -o "%(playli
 
 # Functions
 function ex() {
-	[ $# -eq 0 ] && echo "no files provided" && return 2
+    [ $# -eq 0 ] && echo "no files provided" && return 2
 
-	for v in "$@"; do
-		if [ -f "$v" ]; then
-			case "$v" in
-				*.tar.bz2)   tar xjf "$v"   ;;
-				*.tar.gz)    tar xzf "$v"   ;;
-				*.tar.xz)    tar xJf "$v"   ;;
-				*.bz2)       bunzip2 "$v"   ;;
-				*.rar)       unrar x "$v"   ;;
-				*.gz)        gunzip "$v"    ;;
-				*.tar)       tar xf "$v"    ;;
-				*.tbz2)      tar xjf "$v"   ;;
-				*.tgz)       tar xzf "$v"   ;;
-				*.zip)       unzip "$v"     ;;
-				*.Z)         uncompress "$v";;
-				*.7z)        7z x "$v"      ;;
-				*)           echo "'$v' cannot be extracted via ex()" ;;
-			esac
-		else
-			echo "'$v' is not a valid file"
-		fi
-	done
+    for v in "$@"; do
+        if [ -f "$v" ]; then
+            case "$v" in
+                *.tar.bz2)   tar xjf "$v"   ;;
+                *.tar.gz)    tar xzf "$v"   ;;
+                *.tar.xz)    tar xJf "$v"   ;;
+                *.bz2)       bunzip2 "$v"   ;;
+                *.rar)       unrar x "$v"   ;;
+                *.gz)        gunzip "$v"    ;;
+                *.tar)       tar xf "$v"    ;;
+                *.tbz2)      tar xjf "$v"   ;;
+                *.tgz)       tar xzf "$v"   ;;
+                *.zip)       unzip "$v"     ;;
+                *.Z)         uncompress "$v";;
+                *.7z)        7z x "$v"      ;;
+                *)           echo "'$v' cannot be extracted via ex()" ;;
+            esac
+        else
+            echo "'$v' is not a valid file"
+        fi
+    done
 }
 
 function corona() {
-	curl -s 'https://corona-stats.online/lt?minimal=true' | head -3
+    curl -s 'https://corona-stats.online/lt?minimal=true' | head -3
+}
+
+function sewiti() {
+    case $1 in
+        update)
+            mv -f ~/.zshrc ~/.zshrc.old
+            mv -f ~/.p10k.zsh ~/.p10k.zsh.old
+            curl 'https://raw.githubusercontent.com/sewiti/linux-config/main/.zshrc' -o ~/.zshrc
+            curl 'https://raw.githubusercontent.com/sewiti/linux-config/main/.p10k.zsh' -o ~/.p10k.zsh
+            source ~/.zshrc
+            ;;
+
+        *)
+            echo "usage: sewiti COMMAND"
+            echo ""
+            echo "List of Commands:"
+            echo "  update        update sewiti config files (suffixes old configs with .old)"
+            echo "  help          this message"
+            ;;
+    esac
 }
 
 
