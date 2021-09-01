@@ -44,6 +44,8 @@ alias yt-dl-a='youtube-dl -f "bestaudio[ext=m4a]" --add-metadata -o "%(title)s.%
 alias yt-dl-pl='youtube-dl -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]" -o "%(playlist_index)s. %(title)s.%(ext)s"'
 alias yt-dl-pl-a='youtube-dl -f "bestaudio[ext=m4a]" --add-metadata -o "%(playlist_index)s. %(title)s.%(ext)s"'
 
+alias update-grub='grub-mkconfig -o /boot/grub/grub.cfg'
+
 
 # Functions
 function ex() {
