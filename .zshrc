@@ -39,6 +39,11 @@ alias la='ls -AF'
 
 alias bc="BC_ENV_ARGS=<(echo 'scale=6') \bc -q"
 
+alias sctl='systemctl'
+alias ssctl='sudo systemctl'
+alias jctl='journalctl'
+alias sjctl='sudo journalctl'
+
 alias yt-dl='youtube-dl -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]" -o "%(title)s.%(ext)s"'
 alias yt-dl-a='youtube-dl -f "bestaudio[ext=m4a]" --add-metadata -o "%(title)s.%(ext)s"'
 alias yt-dl-pl='youtube-dl -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]" -o "%(playlist_index)s. %(title)s.%(ext)s"'
