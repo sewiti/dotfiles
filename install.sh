@@ -19,6 +19,7 @@ done
 
 # Install
 mkdir -p "$TARGET/.config/zsh"
+mkdir -p "$TARGET/.config/nvim"
 mkdir -p "$TARGET/.cache/zsh"
 
 FILES=$(find . -path ./.git -prune -o -path ./README.md -prune -o -path ./install.sh -prune -o -type f -print | sed -E 's/^\.\///')
