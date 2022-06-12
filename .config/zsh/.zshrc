@@ -32,6 +32,11 @@ bindkey '^[[3~'   delete-char
 bindkey '^[[H'    beginning-of-line
 bindkey '^[[F'    end-of-line
 
+# SSH agent
+if [ -z "$SSH_AGENT_PID" ] && (( $+commands[ssh-agent] )); then
+    eval "$(ssh-agent)" >/dev/null
+fi
+
 # Functions
 function ex() {
     [ "$#" -eq 0 ] && echo "no files provided" && return 1
