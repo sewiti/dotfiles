@@ -33,7 +33,7 @@ bindkey '^[[H'    beginning-of-line
 bindkey '^[[F'    end-of-line
 
 # SSH agent
-if [ -z "$SSH_AGENT_PID" ] && (( $+commands[ssh-agent] )); then
+if [ -z "$SSH_AUTH_SOCK" ] && (( $+commands[ssh-agent] )); then
     eval "$(ssh-agent)" >/dev/null
 fi
 
