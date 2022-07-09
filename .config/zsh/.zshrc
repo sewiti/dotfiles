@@ -31,6 +31,12 @@ bindkey '^H'      backward-kill-word
 bindkey '^[[3~'   delete-char
 bindkey '^[[H'    beginning-of-line
 bindkey '^[[F'    end-of-line
+# Mac keybinds
+bindkey '^[f'     forward-word
+bindkey '^[b'     backward-word
+bindkey '^[d'     kill-word
+bindkey '^A'      beginning-of-line
+bindkey '^E'      end-of-line
 
 # SSH agent
 if [ -z "$SSH_AUTH_SOCK" ] && (( $+commands[ssh-agent] )); then
