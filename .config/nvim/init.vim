@@ -7,7 +7,6 @@ call plug#end()
 
 set exrc
 set noerrorbells
-set mouse=a
 
 set tabstop=4
 set softtabstop=4
