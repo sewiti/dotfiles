@@ -21,6 +21,22 @@ alias ff='find . -type f -name'
 (( $+commands[fd] )) || alias fd='find . -type d -name'
 
 alias zshrc="${EDITOR:-nano} '${ZDOTDIR:-$HOME}/.zshrc'"
+alias zshrc.local="${EDITOR:-nano} '${ZDOTDIR:-$HOME}/.zshrc.local'"
+
+# Git aliases
+alias gf='git fetch'
+alias gl='git pull'
+
+alias gco='git checkout'
+alias gcb='git checkout -b'
+
+alias gp='git push'
+alias gpf!='git push --force'
+alias gpublish='git push --set-upstream origin "$(git rev-parse --abbrev-ref HEAD)"'
+
+alias grb='git rebase'
+alias grbc='git rebase --continue'
+alias grba='git rebase --abort'
 
 # Keybinds
 bindkey '^ '      autosuggest-accept
