@@ -5,7 +5,7 @@ alias rm='rm -i'
 
 alias more='less'
 alias grep='grep --color'
-alias sgrep='grep -R -n -H -C 5 --exlude-dir=.git'
+alias sgrep='grep -R -n -H -C 5 --exclude-dir=.git'
 
 alias cd..='cd ..'
 alias ls='ls --color=auto'
