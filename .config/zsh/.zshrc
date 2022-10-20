@@ -38,6 +38,10 @@ alias grb='git rebase'
 alias grbc='git rebase --continue'
 alias grba='git rebase --abort'
 
+alias gstl='git stash list'
+alias gstp='git stash pop'
+alias gstu='git stash --include-untracked'
+
 # Keybinds
 bindkey '^ '      autosuggest-accept
 bindkey '^[[1;5C' forward-word
