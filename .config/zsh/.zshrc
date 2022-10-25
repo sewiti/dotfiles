@@ -49,6 +49,9 @@ alias grb='git rebase'
 alias grbc='git rebase --continue'
 alias grba='git rebase --abort'
 
+alias grss='git restore --source'
+alias grsts='git restore --staged --source'
+
 alias gstl='git stash list'
 alias gstp='git stash pop'
 alias gstu='git stash --include-untracked'
