@@ -41,6 +41,7 @@ alias gca!='git commit -v -a --amend'
 alias gcan!='git commit -v -a --no-edit --amend'
 
 alias gp='git push'
+alias gpf='git push --force-with-lease'
 alias gpf!='git push --force'
 alias gpublish='git push --set-upstream origin "$(git rev-parse --abbrev-ref HEAD)"'
 
