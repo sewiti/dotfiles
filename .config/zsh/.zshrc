@@ -30,6 +30,16 @@ alias gl='git pull'
 alias gco='git checkout'
 alias gcb='git checkout -b'
 
+alias ga='git add'
+alias gaa='git add -A'
+
+alias gc='git commit -v'
+alias gc!='git commit -v --amend'
+alias gcn!='git commit -v --no-edit --amend'
+alias gca='git commit -v -a'
+alias gca!='git commit -v -a --amend'
+alias gcan!='git commit -v -a --no-edit --amend'
+
 alias gp='git push'
 alias gpf!='git push --force'
 alias gpublish='git push --set-upstream origin "$(git rev-parse --abbrev-ref HEAD)"'
