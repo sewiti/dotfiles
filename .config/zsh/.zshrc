@@ -36,9 +36,9 @@ alias gaa='git add -A'
 alias gc='git commit -v'
 alias gc!='git commit -v --amend'
 alias gcn!='git commit -v --no-edit --amend'
-alias gca='git commit -v -a'
-alias gca!='git commit -v -a --amend'
-alias gcan!='git commit -v -a --no-edit --amend'
+alias gca='git add -A && git commit -v'
+alias gca!='git add -A && git commit -v --amend'
+alias gcan!='git add -A && git commit -v --no-edit --amend'
 
 alias glg='git log'
 alias glgf="git log --pretty=format:'%C(bold blue)%<(20)%an%C(reset)%C(auto) %<(72)%s %h  %C(green)%ar%C(auto)%d%C(reset)'"
