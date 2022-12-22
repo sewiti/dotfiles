@@ -52,6 +52,9 @@ alias grb='git rebase'
 alias grbc='git rebase --continue'
 alias grba='git rebase --abort'
 
+alias grh='git reset --hard'
+alias grho='git reset --hard "origin/$(git rev-parse --abbrev-ref HEAD)"'
+
 alias grss='git restore --source'
 alias grsts='git restore --staged --source'
 
