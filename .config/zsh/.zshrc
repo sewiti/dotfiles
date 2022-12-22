@@ -40,6 +40,9 @@ alias gca='git commit -v -a'
 alias gca!='git commit -v -a --amend'
 alias gcan!='git commit -v -a --no-edit --amend'
 
+alias glg='git log'
+alias glgf="git log --pretty=format:'%C(bold blue)%<(20)%an%C(reset)%C(auto) %<(72)%s %h  %C(green)%ar%C(auto)%d%C(reset)'"
+
 alias gp='git push'
 alias gpf='git push --force-with-lease'
 alias gpf!='git push --force'
