@@ -13,7 +13,10 @@ elif [ -f /etc/alpine-release ]; then
 	apk update
 	apk add curl git jq neovim wget zsh zsh-autosuggestions zsh-completions zsh-syntax-highlighting
 fi
+
+# Neovim plugins
 curl -fLo "${HOME}/.local/share/nvim/site/autoload/plug.vim" --create-dirs 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+nvim --headless +PlugInstall +qa
 
 # Options
 TARGET="${TARGET:-$HOME}"
