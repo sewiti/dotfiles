@@ -80,7 +80,7 @@ bindkey '^A'      beginning-of-line
 bindkey '^E'      end-of-line
 
 # SSH agent
-if [ -z "$SSH_AUTH_SOCK" ] && (( $+commands[ssh-agent] )); then
+if [ -z "${SSH_AUTH_SOCK}" ] && (( $+commands[ssh-agent] )); then
     eval "$(ssh-agent)" >/dev/null
 fi
 
@@ -89,24 +89,24 @@ function ex() {
     [ "$#" -eq 0 ] && echo "no files provided" && return 1
 
     for v in "$@"; do
-        if [ -f "$v" ]; then
-            case "$v" in
-                *.tar.bz2)   tar xjf "$v"   ;;
-                *.tar.gz)    tar xzf "$v"   ;;
-                *.tar.xz)    tar xJf "$v"   ;;
-                *.bz2)       bunzip2 "$v"   ;;
-                *.rar)       unrar x "$v"   ;;
-                *.gz)        gunzip "$v"    ;;
-                *.tar)       tar xf "$v"    ;;
-                *.tbz2)      tar xjf "$v"   ;;
-                *.tgz)       tar xzf "$v"   ;;
-                *.zip)       unzip "$v"     ;;
-                *.Z)         uncompress "$v";;
-                *.7z)        7z x "$v"      ;;
-                *)           echo "'$v' cannot be extracted via ex()" ;;
+        if [ -f "${v}" ]; then
+            case "${v}" in
+                *.tar.bz2)   tar xjf "${v}"                             ;;
+                *.tar.gz)    tar xzf "${v}"                             ;;
+                *.tar.xz)    tar xJf "${v}"                             ;;
+                *.bz2)       bunzip2 "${v}"                             ;;
+                *.rar)       unrar x "${v}"                             ;;
+                *.gz)        gunzip "${v}"                              ;;
+                *.tar)       tar xf "${v}"                              ;;
+                *.tbz2)      tar xjf "${v}"                             ;;
+                *.tgz)       tar xzf "${v}"                             ;;
+                *.zip)       unzip "${v}"                               ;;
+                *.Z)         uncompress "${v}"                          ;;
+                *.7z)        7z x "${v}"                                ;;
+                *)           echo "'${v}' cannot be extracted via ex()" ;;
             esac
         else
-            echo "'$v' is not a valid file"
+            echo "'${v}' is not a valid file"
         fi
     done
 }
@@ -123,15 +123,15 @@ PROMPT='%B%F{141}%n%F{147}@%m%F{195}:%F{153}%~%F{139}${vcs_info_msg_0_}%(?.%F{19
 # History
 HISTSIZE=10000
 SAVEHIST=10000
-HISTFILE="$HOME/.cache/zsh/.zsh_history"
+HISTFILE="${HOME}/.cache/zsh/.zsh_history"
 setopt appendhistory
 
 # Completion
-ZSH_COMPDUMP="$HOME/.cache/zsh/.zcompdump"
+ZSH_COMPDUMP="${HOME}/.cache/zsh/.zcompdump"
 autoload -Uz compinit
 zstyle ':completion:*' menu select
 zmodload zsh/complist
-compinit -d "$ZSH_COMPDUMP"
+compinit -d "${ZSH_COMPDUMP}"
 _comp_options+=(globdots)
 
 # Local config
@@ -140,7 +140,7 @@ if [ -f "${ZDOTDIR:-$HOME}/.zshrc.local" ]; then
 fi
 
 # Plugins
-if [[ "$OSTYPE" == darwin* ]]; then
+if [[ "${OSTYPE}" == darwin* ]]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
     source "$(brew --prefix)/opt/zsh-autosuggestions/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
     source "$(brew --prefix)/opt/zsh-syntax-highlighting/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
