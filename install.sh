@@ -1,6 +1,20 @@
 #!/bin/sh
 set -e
 
+# Packages
+if [ -f /etc/debian_version ]; then
+	apt update
+	apt install --yes curl git jq neovim wget zsh zsh-autosuggestions zsh-syntax-highlighting
+elif [ -f /etc/redhat-release ]; then
+	yum install --assumeyes curl git jq neovim wget zsh zsh-autosuggestions zsh-syntax-highlighting
+elif [ -f /etc/arch-release ]; then
+	pacman -Sy --noconfirm curl git jq neovim wget zsh zsh-autosuggestions zsh-completions zsh-syntax-highlighting
+elif [ -f /etc/alpine-release ]; then
+	apk update
+	apk add curl git jq neovim wget zsh zsh-autosuggestions zsh-completions zsh-syntax-highlighting
+fi
+curl -fLo "${HOME}/.local/share/nvim/site/autoload/plug.vim" --create-dirs 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+
 # Options
 TARGET="${TARGET:-$HOME}"
 for arg in "$@"; do
