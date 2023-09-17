@@ -20,7 +20,7 @@ alias duf='du -sh *'
 alias ff='find . -type f -name'
 (( $+commands[fd] )) || alias fd='find . -type d -name'
 
-alias ssh-config="${EDITOR:-nano} '${HOME}/.ssh/config'"
+alias ssh_config="${EDITOR:-nano} '${HOME}/.ssh/config'"
 alias zshrc="${EDITOR:-nano} '${ZDOTDIR:-$HOME}/.zshrc'"
 alias zshrc.local="${EDITOR:-nano} '${ZDOTDIR:-$HOME}/.zshrc.local'"
 
