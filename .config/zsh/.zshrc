@@ -8,11 +8,9 @@ alias sgrep='grep -R -n -H -C 5 --exclude-dir=.git'
 
 alias cd..='cd ..'
 alias ls='ls --color=auto'
-alias l='ls -lFh'
 alias la='ls -lAFh'
-alias lr='ls -tRFh'
-alias lt='ls -ltFh'
-alias ll='ls -l'
+alias lt='ls -lAFht'
+alias lu='ls -lAFhS'
 
 alias dud='du -d 1 -h'
 alias duf='du -sh *'
