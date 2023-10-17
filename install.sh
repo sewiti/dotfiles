@@ -1,9 +1,9 @@
 #!/bin/bash
-set -xe
 
 if [ -z "${INSTALL_PKGS}" ]; then
 	read -p "Would you like to install packages? (y/n) " INSTALL_PKGS
 fi
+set -xe
 if [[ "${INSTALL_PKGS}" =~ [yY] ]]; then
 	if [ -z "${SUDO_PREFIX}" ] && [ "${EUID}" -ne 0 ]; then
 		SUDO_PREFIX=sudo
