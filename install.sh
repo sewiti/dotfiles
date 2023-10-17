@@ -1,8 +1,8 @@
 #!/bin/bash
 set -xe
 
-if [[ "${OSTYPE}" != darwin* ]] && [ -z "${INSTALL_PKGS}" ]; then
-	read -p "Would you like to install packages? (y/n)" INSTALL_PKGS
+if [ -z "${INSTALL_PKGS}" ]; then
+	read -p "Would you like to install packages? (y/n) " INSTALL_PKGS
 fi
 if [[ "${INSTALL_PKGS}" =~ [yY] ]]; then
 	if [ -z "${SUDO_PREFIX}" ] && [ "${EUID}" -ne 0 ]; then
@@ -10,7 +10,7 @@ if [[ "${INSTALL_PKGS}" =~ [yY] ]]; then
 	fi
 
 	if [[ "${OSTYPE}" == darwin* ]]; then
-		echo "TODO"
+		brew install curl git neovim wget zsh zsh-autosuggestions zsh-syntax-highlighting coreutils zsh-completions
 	elif command -v apt >/dev/null; then
 		${SUDO_PREFIX} apt update && ${SUDO_PREFIX} apt install -y curl git neovim wget zsh zsh-autosuggestions zsh-syntax-highlighting passwd
 	elif command -v dnf >/dev/null; then
