@@ -1,5 +1,5 @@
 call plug#begin()
-    Plug 'gruvbox-community/gruvbox'
+    Plug 'morhetz/gruvbox'
 call plug#end()
 
 set exrc
