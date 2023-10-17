@@ -82,6 +82,25 @@ if [ -z "${SSH_AUTH_SOCK}" ] && (( $+commands[ssh-agent] )); then
     eval "$(ssh-agent)" >/dev/null
 fi
 
+# Functions
+if [[ "${OSTYPE}" == darwin* ]]; then
+    function unixtime() {
+        if [[ "${1}" =~ '^[+-]?[0-9]+(\.[0-9]+)?$' ]]; then
+            date -Iseconds -r "${1}"
+        else
+            date -j -f "%Y-%m-%dT%H:%M:%SZ" "${1}" "+%s"
+        fi
+    }
+else
+    function unixtime() {
+       if [[ "${1}" =~ '^[+-]?[0-9]+(\.[0-9]+)?$' ]]; then
+           date "--date=@${1}" --iso-8601=seconds
+       else
+           date "--date=${1}" '+%s'
+       fi
+    }
+fi
+
 # Prompt
 autoload -Uz colors && colors
 autoload -Uz vcs_info
