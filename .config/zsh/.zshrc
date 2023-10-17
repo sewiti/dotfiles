@@ -3,7 +3,6 @@ alias mv='mv -i'
 alias cp='cp -i'
 alias rm='rm -i'
 
-alias more='less'
 alias grep='grep --color'
 alias sgrep='grep -R -n -H -C 5 --exclude-dir=.git'
 
@@ -17,6 +16,7 @@ alias ll='ls -l'
 
 alias dud='du -d 1 -h'
 alias duf='du -sh *'
+
 alias ff='find . -type f -name'
 (( $+commands[fd] )) || alias fd='find . -type d -name'
 
@@ -83,33 +83,6 @@ bindkey '^E'      end-of-line
 if [ -z "${SSH_AUTH_SOCK}" ] && (( $+commands[ssh-agent] )); then
     eval "$(ssh-agent)" >/dev/null
 fi
-
-# Functions
-function ex() {
-    [ "$#" -eq 0 ] && echo "no files provided" && return 1
-
-    for v in "$@"; do
-        if [ -f "${v}" ]; then
-            case "${v}" in
-                *.tar.bz2)   tar xjf "${v}"                             ;;
-                *.tar.gz)    tar xzf "${v}"                             ;;
-                *.tar.xz)    tar xJf "${v}"                             ;;
-                *.bz2)       bunzip2 "${v}"                             ;;
-                *.rar)       unrar x "${v}"                             ;;
-                *.gz)        gunzip "${v}"                              ;;
-                *.tar)       tar xf "${v}"                              ;;
-                *.tbz2)      tar xjf "${v}"                             ;;
-                *.tgz)       tar xzf "${v}"                             ;;
-                *.zip)       unzip "${v}"                               ;;
-                *.Z)         uncompress "${v}"                          ;;
-                *.7z)        7z x "${v}"                                ;;
-                *)           echo "'${v}' cannot be extracted via ex()" ;;
-            esac
-        else
-            echo "'${v}' is not a valid file"
-        fi
-    done
-}
 
 # Prompt
 autoload -Uz colors && colors
