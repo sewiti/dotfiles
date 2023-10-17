@@ -1,4 +1,5 @@
 # Aliases
+alias cd..='cd ..'
 alias mv='mv -i'
 alias cp='cp -i'
 alias rm='rm -i'
@@ -6,9 +7,13 @@ alias rm='rm -i'
 alias grep='grep --color'
 alias sgrep='grep -R -n -H -C 5 --exclude-dir=.git'
 
-alias cd..='cd ..'
-alias ls='ls --color=auto'
-alias la='ls -lAFh'
+if [[ "${OSTYPE}" == darwin* ]]; then
+	alias ls='gls --color=auto'
+else
+	alias ls='ls --color=auto'
+fi
+alias l='ls -lFh --group-directories-first'
+alias la='ls -lAFh --group-directories-first'
 alias lt='ls -lAFht'
 alias lu='ls -lAFhS'
 
@@ -84,22 +89,15 @@ fi
 
 # Functions
 if [[ "${OSTYPE}" == darwin* ]]; then
-    function unixtime() {
-        if [[ "${1}" =~ '^[+-]?[0-9]+(\.[0-9]+)?$' ]]; then
-            date -Iseconds -r "${1}"
-        else
-            date -j -f "%Y-%m-%dT%H:%M:%SZ" "${1}" "+%s"
-        fi
-    }
-else
-    function unixtime() {
-       if [[ "${1}" =~ '^[+-]?[0-9]+(\.[0-9]+)?$' ]]; then
-           date "--date=@${1}" --iso-8601=seconds
-       else
-           date "--date=${1}" '+%s'
-       fi
-    }
+	alias date='gdate'
 fi
+function unixtime() {
+	if [[ "${1}" =~ '^[+-]?[0-9]+(\.[0-9]+)?$' ]]; then
+		date "--date=@${1}" --iso-8601=seconds
+	else
+		date "--date=${1}" '+%s'
+	fi
+}
 
 # Prompt
 autoload -Uz colors && colors
