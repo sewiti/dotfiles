@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ -z "${INSTALL_PKGS}" ]; then
-	read -p "Would you like to install packages? (y/n) " INSTALL_PKGS
+	read -rp "Would you like to install packages? (y/n) " INSTALL_PKGS
 fi
 set -xe
 if [[ "${INSTALL_PKGS}" =~ [yY] ]]; then
