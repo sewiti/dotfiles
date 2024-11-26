@@ -63,7 +63,6 @@ alias grss='git restore --source'
 alias grsts='git restore --staged --source'
 
 alias gstl='git stash list'
-alias gstp='git stash pop'
 alias gsta='git stash apply'
 alias gstu='git stash --include-untracked'
 
