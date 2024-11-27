@@ -62,7 +62,7 @@ alias grho='git reset --hard "origin/$(git rev-parse --abbrev-ref HEAD)"'
 alias grss='git restore --source'
 alias grsts='git restore --staged --source'
 
-alias gstl='git stash list'
+alias gstl='git stash list --pretty=format:"%<(11)%C(yellow)%gd%C(reset) %<(80)%s %C(green)%cr%C(reset)"'
 alias gsta='git stash apply'
 alias gstu='git stash --include-untracked'
 
