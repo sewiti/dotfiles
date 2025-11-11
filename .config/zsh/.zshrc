@@ -12,10 +12,10 @@ if [[ "${OSTYPE}" == darwin* ]]; then
 else
 	alias ls='ls --color=auto'
 fi
-alias l='ls -lFh --group-directories-first'
-alias la='ls -lAFh --group-directories-first'
-alias lt='ls -lAFht'
-alias lu='ls -lAFhS'
+alias l='ls -lFh --time-style=iso --group-directories-first'
+alias la='ls -lAFh --time-style=iso --group-directories-first'
+alias lt='ls -lAFht --time-style=iso'
+alias lu='ls -lAFhS --time-style=iso'
 
 alias dud='du -d 1 -h'
 alias duf='du -sh *'
