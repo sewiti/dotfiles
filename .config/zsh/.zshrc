@@ -31,6 +31,7 @@ alias zshrc.local="${EDITOR:-nano} '${ZDOTDIR:-$HOME}/.zshrc.local'"
 alias gf='git fetch'
 alias gl='git pull'
 
+alias gdev='git checkout develop'
 alias gco='git checkout'
 alias gcb='git checkout -b'
 
