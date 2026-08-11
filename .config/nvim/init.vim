@@ -35,6 +35,8 @@ set colorcolumn=80
 highlight ColorColumn ctermbg=darkgrey
 
 syntax on
+set background=light
+let g:gruvbox_contrast_light='hard'
 colorscheme gruvbox
 
 let mapleader=' '
