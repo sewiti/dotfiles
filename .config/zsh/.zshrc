@@ -107,7 +107,7 @@ precmd_vcs_info() { vcs_info }
 precmd_functions+=( precmd_vcs_info )
 setopt prompt_subst
 zstyle ':vcs_info:git:*' formats ' %b'
-PROMPT='%B%F{65}%n%F{107}@%F{150}%m%F{194}:%F{193}%~%F{65}${vcs_info_msg_0_}%(?.%F{194}.%F{209})%(!.#.$)%f%b '
+PROMPT='%B%F{65}%n%F{107}@%m%f:%~%F{65}${vcs_info_msg_0_}%(?.%f.%F{9})%(!.#.$)%f%b '
 
 # History
 HISTSIZE=10000
